@@ -5,10 +5,10 @@ rabbitmq:
   environment:
     - "RABBITMQ_PASS=Phaish9ohbaidei6oole"
 
-# Start transformation worker
-strokewidthtransform:
-  image: maiduchuy/img-proc
-  volumes: 
+# Start image processing worker
+imageprocessing:
+  build: ./image-processing
+  volumes:
     - ./scripts/:/opt/open-ocr/
   dns: ["8.8.8.8"]
   links:
@@ -17,8 +17,8 @@ strokewidthtransform:
 
 # Start OCR worker
 openocrworker:
-  image: maiduchuy/open-ocr
-  volumes: 
+  build: ./ocrworker
+  volumes:
     - ./scripts/:/opt/open-ocr/
   dns: ["8.8.8.8"]
   links:
@@ -29,7 +29,7 @@ openocrworker:
 openocr:
   image: maiduchuy/open-ocr
   dns: ["8.8.8.8"]
-  volumes: 
+  volumes:
     - ./scripts/:/opt/open-ocr/
   links:
     - rabbitmq

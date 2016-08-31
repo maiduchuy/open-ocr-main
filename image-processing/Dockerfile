@@ -23,7 +23,7 @@ RUN cd /opencv/build && make -j2 && make install
 ENV GOPATH /opt/go
 RUN mkdir -p $GOPATH
 
-RUN go get -u -v github.com/maiduchuy/open-ocr
+RUN go get -u -v github.com/maiduchuy/image-processing
 
 # build open-ocr-preprocessor binary and copy it to /usr/bin
-RUN cd $GOPATH/src/github.com/maiduchuy/open-ocr/cli-preprocessor && go build -v -o open-ocr-preprocessor && cp open-ocr-preprocessor /usr/bin
+RUN cd $GOPATH/src/github.com/maiduchuy/image-processing/cli-preprocessor && go build -v -o open-ocr-preprocessor && cp open-ocr-preprocessor /usr/bin

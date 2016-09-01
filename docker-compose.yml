@@ -15,6 +15,16 @@ imageprocessing:
     - rabbitmq
   command: "/opt/open-ocr/open-ocr-preprocessor -amqp_uri amqp://admin:Phaish9ohbaidei6oole@rabbitmq/ -preprocessor img-proc"
 
+# Start converting pdf worker
+# convertpdf:
+#   build: ./convert-pdf
+#   volumes:
+#     - ./scripts/:/opt/open-ocr/
+#   dns: ["8.8.8.8"]
+#   links:
+#     - rabbitmq
+#   command: "/opt/open-ocr/open-ocr-preprocessor -amqp_uri amqp://admin:Phaish9ohbaidei6oole@rabbitmq/ -preprocessor convert-pdf"
+
 # Start OCR worker
 openocrworker:
   build: ./ocrworker
